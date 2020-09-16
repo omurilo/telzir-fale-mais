@@ -1,0 +1,37 @@
+version: "3"
+
+networks:
+  falemais:
+    driver: bridge
+
+services:
+  postgres:
+    image: bitnami/postgresql:latest
+    container_name: "falemais_pg"
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    environment:
+      - ALLOW_IP_RANGE=0.0.0.0/0
+      - POSTGRESQL_USERNAME=${DB_USER}
+      - POSTGRESQL_PASSWORD=${DB_PASSWORD}
+      - POSTGRESQL_DATABASE=${DB_NAME}
+    volumes:
+      - ./docker/data/pg:/bitnami/postgresql
+    networks:
+      - falemais
+
+  app:
+    container_name: "falemais_app"
+    build: .
+    environment:
+      - DB_URL=postgres://${DB_USER}:${DB_PASSWORD}@localhost:5432/${DB_NAME}
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app
+    ports:
+      - ${PORT}:${PORT}
+    command: ${DOCKER_APP_COMMAND}
+    networks:
+      - falemais
