@@ -1,7 +1,7 @@
 import Sequelize from "sequelize";
 
 const PlansSchema = {
-  name: "Cost",
+  name: "Plans",
   schema: {
     id: {
       type: Sequelize.UUID,

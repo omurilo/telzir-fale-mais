@@ -36,7 +36,7 @@ export default class PostgreSQL extends ICrud {
 
   async index(query, skip, limit) {
     const { count, rows } = await this._schema.findAndCountAll({ where: query, raw: true, offset: skip, limit });
-    return { totalCosts: count, costs: rows };
+    return { count, rows };
   }
 
   update(id, item, upsert = false) {

@@ -31,7 +31,7 @@ describe("Postgres test", () => {
   });
 
   it("should be list a costs", async () => {
-    const { costs: [results] } = await postgresContext.index({
+    const { rows: [results] } = await postgresContext.index({
       origin: MOCK_COST_STORE.origin,
     });
     delete results.id;
@@ -39,7 +39,7 @@ describe("Postgres test", () => {
   });
 
   it("should be search a cost by id", async () => {
-    const { costs: [item] } = await postgresContext.index({
+    const { rows: [item] } = await postgresContext.index({
       origin: MOCK_COST_STORE.origin,
     });
     const result = await postgresContext.show(item.id);
@@ -48,7 +48,7 @@ describe("Postgres test", () => {
   });
 
   it("should be update a cost by id", async () => {
-    const { costs: [item] } = await postgresContext.index({
+    const { rows: [item] } = await postgresContext.index({
       origin: MOCK_COST_UPDATE.origin,
     });
     const newItem = { ...MOCK_COST_UPDATE, origin: 17, cost: 2.7 };
@@ -58,7 +58,7 @@ describe("Postgres test", () => {
   });
 
   it("should be delete a cost by id", async () => {
-    const { costs: [item] } = await postgresContext.index({
+    const { rows: [item] } = await postgresContext.index({
       origin: MOCK_COST_STORE.origin,
     });
     const result = await postgresContext.delete({ id: item.id });
