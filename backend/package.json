@@ -5,9 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "cross-env NODE_ENV=development jest --detectOpenHandles",
+    "coverage": "cross-env NODE_ENV=development jest --detectOpenHandles --coverage",
     "test:prod": "cross-env NODE_ENV=production npm run test",
-    "coverage": "nyc npm run test",
-    "coverage:prod": "nyc npm run test:prod",
     "prod": "cross-env NODE_ENV=production npm run build && pm2-runtime dist/index.js",
     "start": "pm2 start babel-node src/index.js",
     "dev": "nodemon --exec babel-node src/index.js",

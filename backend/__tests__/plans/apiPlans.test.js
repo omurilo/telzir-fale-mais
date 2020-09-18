@@ -23,6 +23,10 @@ describe("plan api test suite", () => {
     MOCK_ID = data.id;
   });
 
+  afterEach(() => {
+    app.stop({ timeout: 100 });
+  });
+
   it("list /plans", async () => {
     const result = await app.inject({
       method: "GET",

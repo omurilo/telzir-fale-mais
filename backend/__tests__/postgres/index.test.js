@@ -1,4 +1,4 @@
-import '../../src/config/env';
+import "../../src/config/env";
 import assert from "assert";
 import Postgres from "../../src/db/strategies/postgres";
 import CostSchema from "../../src/db/strategies/postgres/schemas/costSchema";
@@ -18,6 +18,13 @@ describe("Postgres test", () => {
     await postgresContext.store(MOCK_COST_UPDATE);
   });
 
+  it("should don't connected to PostgreSQL", async () => {
+    const context = new Context(new Postgres('', ''));
+    const result = await context.isConnected();
+
+    assert.equal(result, false);
+  });
+
   it("should connect to PostgreSQL", async () => {
     const result = await postgresContext.isConnected();
 
@@ -31,7 +38,9 @@ describe("Postgres test", () => {
   });
 
   it("should be list a costs", async () => {
-    const { rows: [results] } = await postgresContext.index({
+    const {
+      rows: [results],
+    } = await postgresContext.index({
       origin: MOCK_COST_STORE.origin,
     });
     delete results.id;
@@ -39,7 +48,9 @@ describe("Postgres test", () => {
   });
 
   it("should be search a cost by id", async () => {
-    const { rows: [item] } = await postgresContext.index({
+    const {
+      rows: [item],
+    } = await postgresContext.index({
       origin: MOCK_COST_STORE.origin,
     });
     const result = await postgresContext.show(item.id);
@@ -48,7 +59,9 @@ describe("Postgres test", () => {
   });
 
   it("should be update a cost by id", async () => {
-    const { rows: [item] } = await postgresContext.index({
+    const {
+      rows: [item],
+    } = await postgresContext.index({
       origin: MOCK_COST_UPDATE.origin,
     });
     const newItem = { ...MOCK_COST_UPDATE, origin: 17, cost: 2.7 };
@@ -57,8 +70,18 @@ describe("Postgres test", () => {
     assert.deepEqual(result.origin, newItem.origin);
   });
 
+  it("should be upsert a cost", async () => {
+    const newItem = { origin: 11, destiny: 18, cost: 0.9 };
+    const [result] = await postgresContext.update('', newItem, true);
+
+    delete result.id;
+    assert.deepEqual(result.origin, newItem.origin);
+  });
+
   it("should be delete a cost by id", async () => {
-    const { rows: [item] } = await postgresContext.index({
+    const {
+      rows: [item],
+    } = await postgresContext.index({
       origin: MOCK_COST_STORE.origin,
     });
     const result = await postgresContext.delete({ id: item.id });
