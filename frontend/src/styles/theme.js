@@ -1,14 +1,21 @@
 const Theme = {
   colors: {
-    primary: "#2b626b",
-    secondary: "#f0a91c",
+    primary: "#71a1ce",
+    secondary: "#eb4d4f",
     grey: "#8e8e8e",
+    lightGrey: "#e6e6e6",
+    lighterGrey: "#ebebf5",
     darkerGrey: "#585858",
     success: "#44a655",
     error: "#d9534f",
     white: "#fff",
     black: "#000",
     blackTransparency: "rgba(0, 0, 0, 0.25)",
+    lightWhite: "#f0f0f0",
+    placeholder: "#C1BCCC",
+    textInGrey: "#6A6180",
+    textInPrimary: "#d4c2ff",
+    inputBackground: "#f8f8fc",
   },
   fontSizes: {
     ultimate: "1.75rem",
@@ -38,6 +45,6 @@ const Theme = {
     small: "0.25rem",
     tiny: "0.125rem",
   },
-}
+};
 
-export default Theme
+export default Theme;

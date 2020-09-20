@@ -1,8 +1,8 @@
-import Head from "next/head"
-import { ThemeProvider } from "styled-components"
+import Head from "next/head";
+import { ThemeProvider } from "styled-components";
 
-import GlobalStyles from "../styles/global"
-import Theme from "../styles/theme"
+import GlobalStyles from "../styles/global";
+import Theme from "../styles/theme";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -25,5 +25,5 @@ export default function App({ Component, pageProps }) {
       <Component {...pageProps} />
       <GlobalStyles />
     </ThemeProvider>
-  )
+  );
 }

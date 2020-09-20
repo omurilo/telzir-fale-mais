@@ -16,10 +16,31 @@
 
 - **Frontend utilizando React JS**
 
-# First steps
+# Primeiros Passos
 
-### Create a .env and configure environment variables
+### 1 - Clonar esse repositório na sua máquina
 ```bash
-# copy .env.example, go to .env.development and add a variables
-cp backend/.env.example backend/.env.development
+git clone git@github.com:omurilo/telzir-fale-mais.git && cd telzir-fale-mais
 ```
+
+### 2 - Criar o .env e configurar as váriaveis de ambiente
+```bash
+# copy .env.example, go to .env.development and configure a variables
+cp backend/.env.example backend/.env.development
+code backend/.env.development
+```
+
+### 3 - Se você tiver docker na sua máquina, rode:
+```bash
+npm run docker:dev # to initialize postgres and api in dev mode
+```
+
+> Mas se você não tiver o docker, precisará de uma instância do PostgreSQL rodando, após confirmar isso, rode:
+
+```bash
+npm run migrate && npm run dev
+```
+
+### Voilá! A Api já estará rodando, os seeds já foram inseridos e agora é só partir pro frontend e depois testar.
+
+### 4 - Iniciar a aplicação do frontend

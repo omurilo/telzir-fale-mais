@@ -1,4 +1,4 @@
-import { createGlobalStyle, css } from "styled-components"
+import { createGlobalStyle, css } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   ${({ theme }) => css`
@@ -68,6 +68,6 @@ const GlobalStyle = createGlobalStyle`
       padding: 0;
     }
   `}
-`
+`;
 
-export default GlobalStyle
+export default GlobalStyle;
