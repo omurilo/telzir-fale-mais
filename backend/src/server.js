@@ -1,8 +1,8 @@
 import Hapi from "@hapi/hapi";
 import Sentry from "hapi-sentry";
 import Swagger from "hapi-swagger";
-import Inert from '@hapi/inert';
-import Vision from '@hapi/vision';
+import Inert from "@hapi/inert";
+import Vision from "@hapi/vision";
 
 import Routes from "./routes";
 import SentryConfig from "./config/sentry";
@@ -12,14 +12,14 @@ class App {
   constructor() {
     this.app = new Hapi.Server({
       port: process.env.PORT,
+      routes: {
+        cors: {
+          origin: ["*"],
+        },
+      },
     });
-    
-    this.app.register([
-      Inert,
-      Vision,
-      this.sentry(),
-      this.swagger()
-    ]);
+
+    this.app.register([Inert, Vision, this.sentry(), this.swagger()]);
   }
 
   swagger() {
@@ -46,7 +46,7 @@ class App {
 
   async run() {
     await this.app.start();
-    console.log(`Aplicação rodando na porta ${process.env.PORT}`)
+    console.log(`Aplicação rodando na porta ${process.env.PORT}`);
   }
 }
 

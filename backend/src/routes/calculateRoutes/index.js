@@ -54,7 +54,7 @@ export default class CalculateRoute extends BaseRoute {
             count: totalPlans,
             rows: [planObj],
           } = await this.planDB.index({ id: planId }, 0, 1);
-        
+
           if (!totalCosts) {
             return Boom.preconditionFailed("Origin -> Destiny not found!");
           }
@@ -73,6 +73,7 @@ export default class CalculateRoute extends BaseRoute {
           }
 
           return {
+            minuteCost: costObj.cost,
             faleMaisCost,
             withoutFaleMaisCost,
           };
