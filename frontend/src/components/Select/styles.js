@@ -37,6 +37,13 @@ const Control = styled(components.Control)`
     outline: 0;
     font-size: 1rem;
     position: relative;
+
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 0;
+    border-style: solid;
+    border-color: ${theme.colors.lightGrey};
   `}
 `;
 

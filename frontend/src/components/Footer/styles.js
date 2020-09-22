@@ -21,6 +21,11 @@ export const Footer = styled.footer`
       margin-left: ${({ theme }) => theme.spacing.tiny};
     }
   }
+
+  @media (min-width: 1280px) {
+    width: 1280px;
+    margin: 0 auto;
+  }
 `;
 
 export const FaceIcon = styled(Facebook)``;

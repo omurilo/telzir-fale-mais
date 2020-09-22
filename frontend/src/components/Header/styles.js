@@ -13,5 +13,10 @@ export const Header = styled.header`
       display: flex;
       align-items: center;
     }
+
+    @media (min-width: 1280px) {
+      width: 1280px;
+      margin: 0 auto;
+    }
   `}
 `;

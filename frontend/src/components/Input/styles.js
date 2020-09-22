@@ -97,7 +97,6 @@ export const Input = styled.input`
     }
 
     @media (min-width: 768px) {
-      width: auto;
       min-width: 22rem;
     }
   `}
