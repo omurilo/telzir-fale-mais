@@ -11,6 +11,7 @@ export const Content = styled.section`
   justify-content: flex-start;
   height: 100%;
 `;
+
 export const Header = styled.div`
   ${({ theme }) => css`
     width: 100%;
@@ -62,6 +63,7 @@ export const Form = styled.form`
 
     @media (min-width: 768px) {
       padding: ${theme.spacing.default} ${theme.spacing.big};
+      width: 35rem;
     }
   `};
 `;
