@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render the Header 1`] = `
+<header
+  class="styles__Header-sc-1l6xfxq-0 bLkeAo"
+>
+  <div>
+    <span
+      class="styles__LogoItem-isvygu-0 jiqBiG"
+    >
+      T
+    </span>
+    <span
+      class="styles__LogoItem-isvygu-0 jiqBiG"
+    >
+      E
+    </span>
+    <span
+      class="styles__LogoItem-isvygu-0 jiqBiG"
+    >
+      L
+    </span>
+    <span
+      class="styles__LogoItem-isvygu-0 iUeJxp"
+      color="secondary"
+      rotate="25"
+      scale="1.25"
+    >
+      Z
+    </span>
+    <span
+      class="styles__LogoItem-isvygu-0 jiqBiG"
+    >
+      I
+    </span>
+    <span
+      class="styles__LogoItem-isvygu-0 jiqBiG"
+    >
+      R
+    </span>
+  </div>
+  <nav
+    class="styles__Container-sc-43hkch-0 krZqfW"
+  >
+    <a
+      class="styles__Link-sc-1hpn04p-0 styles__LinkItem-sc-43hkch-1 dJHLSH"
+      href="/"
+    >
+      Calcula aí!
+    </a>
+    <a
+      class="styles__Link-sc-1hpn04p-0 styles__LinkItem-sc-43hkch-1 dJHLSH"
+      href="/about"
+    >
+      Sobre
+    </a>
+  </nav>
+  <span
+    class="styles__MenuIcon-sc-17rz6i4-1 cpjjOV null"
+    role="menu"
+  />
+  <div
+    class="styles__Container-sc-17rz6i4-0 lcWyLC"
+  >
+    <a
+      class="styles__Link-sc-1hpn04p-0 styles__LinkItem-sc-17rz6i4-2 dJHLSH"
+      href="/"
+    >
+      Calcula aí!
+    </a>
+    <a
+      class="styles__Link-sc-1hpn04p-0 styles__LinkItem-sc-17rz6i4-2 dJHLSH"
+      href="/about"
+    >
+      Sobre
+    </a>
+  </div>
+</header>
+`;

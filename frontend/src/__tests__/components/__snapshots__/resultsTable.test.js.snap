@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Results Table should render the Results Table 1`] = `
+Array [
+  <p>
+    Custo da ligação 
+    <strong>
+      por minuto
+    </strong>
+    :
+     
+    <span>
+      0.9
+    </span>
+  </p>,
+  <p>
+    Custo da ligação 
+    <strong>
+      com FALE+
+    </strong>
+    :
+     
+    <span>
+      0
+    </span>
+  </p>,
+  <p>
+    Custo da ligação 
+    <strong>
+      sem FALE+
+    </strong>
+    :
+     
+    <span>
+      35.55
+    </span>
+  </p>,
+]
+`;
