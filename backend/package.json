@@ -11,6 +11,8 @@
     "start": "pm2 start babel-node src/index.js",
     "dev": "nodemon --exec babel-node src/index.js",
     "build": "babel src -d dist",
+    "db:migrate": "sequelize db:migrate",
+    "db:seed": "sequelize db:seed:all",
     "docker:dev": "docker-compose --env-file .env.development up -d"
   },
   "author": "Murilo Henrique",
@@ -36,7 +38,9 @@
     "@babel/node": "^7.10.5",
     "@babel/plugin-transform-runtime": "^7.11.5",
     "@babel/preset-env": "^7.11.5",
+    "@babel/register": "^7.11.5",
     "babel-eslint": "^10.1.0",
+    "babel-plugin-add-module-exports": "^1.0.4",
     "eslint": "^7.9.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.11.0",
@@ -46,6 +50,7 @@
     "nodemon": "^2.0.4",
     "nyc": "^15.1.0",
     "prettier": "^2.1.1",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^6.2.0",
+    "uuid": "^8.3.0"
   }
 }
