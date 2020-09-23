@@ -2,8 +2,8 @@ import React from "react";
 
 import * as Styled from "./styles";
 
-function Title({ children }) {
-  return <Styled.Title>{children}</Styled.Title>;
+function Title({ children, variant }) {
+  return <Styled.Title variant={variant}>{children}</Styled.Title>;
 }
 
 export default Title;

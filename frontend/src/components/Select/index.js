@@ -12,7 +12,7 @@ const SelectComponent = ({
 }) => {
   return (
     <Styled.Container size={dimension} marginTop={marginTop}>
-      <Styled.Select name={name} {...rest} />
+      <Styled.Select name={name} inputId={name} {...rest} />
       <Styled.Label htmlFor={name} primary={primary}>
         {label}
       </Styled.Label>

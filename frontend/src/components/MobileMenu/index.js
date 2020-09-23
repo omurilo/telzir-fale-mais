@@ -19,6 +19,7 @@ function MobileMenu() {
   return (
     <>
       <Styled.MenuIcon
+        role="menu"
         onClick={toggleMenu}
         className={`${isOpen ? "active" : null}`}
       />

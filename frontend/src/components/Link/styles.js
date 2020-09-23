@@ -7,6 +7,7 @@ export const Link = styled.a`
     margin-bottom: ${theme.spacing.little};
     padding: ${theme.spacing.default};
     text-transform: uppercase;
+    white-space: nowrap;
 
     position: relative;
 

@@ -26,28 +26,32 @@ export default function About() {
         utilizando o plano Fale+.
       </p>
       <Styled.Table>
-        <tr>
-          <th>Plano</th>
-          <th>Quota</th>
-        </tr>
-        <tr>
-          <td>
-            <strong>Fale+</strong> 30
-          </td>
-          <td>30 minutos</td>
-        </tr>
-        <tr>
-          <td>
-            <strong>Fale+</strong> 60
-          </td>
-          <td>60 minutos</td>
-        </tr>
-        <tr>
-          <td>
-            <strong>Fale+</strong> 120
-          </td>
-          <td>120 minutos</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>Plano</th>
+            <th>Quota</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>Fale+</strong> 30
+            </td>
+            <td>30 minutos</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Fale+</strong> 60
+            </td>
+            <td>60 minutos</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Fale+</strong> 120
+            </td>
+            <td>120 minutos</td>
+          </tr>
+        </tbody>
       </Styled.Table>
     </Styled.Main>
   );

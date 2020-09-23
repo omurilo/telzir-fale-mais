@@ -7,7 +7,7 @@ function Menu() {
   return (
     <Styled.Container>
       <Link href="/" passHref>
-        <Styled.LinkItem>Home</Styled.LinkItem>
+        <Styled.LinkItem>Calcula aí!</Styled.LinkItem>
       </Link>
       <Link href="/about" passHref>
         <Styled.LinkItem>Sobre</Styled.LinkItem>
