@@ -23,7 +23,7 @@ const CostSchema = {
     },
   },
   options: {
-    tableName: "TB_COST",
+    tableName: "TB_COSTS",
   },
 };
 
