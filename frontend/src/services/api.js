@@ -1,5 +1,7 @@
-export default async function api(...args) {
-  const res = await fetch(...args);
+import axios from "axios";
 
-  return res.json();
-}
+const api = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+});
+
+export default api;

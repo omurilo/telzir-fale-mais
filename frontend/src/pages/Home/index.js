@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import useSWR from "swr";
+import React, { useEffect, useState } from "react";
 
 import Title from "components/Title";
 import Select from "components/Select";
@@ -16,14 +15,22 @@ export default function Home() {
   const [minuteCost, setMinuteCost] = useState(0);
   const [faleMaisCost, setFaleMaisCost] = useState(0);
   const [withoutFaleMaisCost, setWithoutFaleMaisCost] = useState(0);
+  const [options, setOptions] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const { data } = useSWR(`${process.env.NEXT_PUBLIC_BASE_URL}/plans`, api, {
-    revalidateOnFocus: false,
-  });
-  const options = data?.plans.map((plan) => ({
-    label: plan.name,
-    value: plan.id,
-  }));
+  useEffect(() => {
+    (async () => {
+      const { data } = await api.get("plans");
+
+      const optionsData = data?.plans.map((plan) => ({
+        label: plan.name,
+        value: plan.id,
+      }));
+
+      setIsLoading(false);
+      setOptions(optionsData);
+    })();
+  }, []);
 
   const { values, errors, handleSetValues, handleSetErrors } = useForm({
     initialValues: {
@@ -37,14 +44,15 @@ export default function Home() {
   const handleSetFormValue = (e, a) => {
     const { name } = e.target ?? a;
     const value = name === "plan" ? e : e.target.value;
+
     if (name === "origin" || name === "destiny") {
       if (value.length < 3) {
         handleSetErrors(name, "Valor inválido (exemplo: 011)");
       } else {
-        handleSetErrors(name, undefined);
+        handleSetErrors(name, undefined, true);
       }
     } else if (name === "time" && value.length > 0) {
-      handleSetErrors(name, undefined);
+      handleSetErrors(name, undefined, true);
     }
 
     return handleSetValues(name, value);
@@ -63,44 +71,38 @@ export default function Home() {
 
   const handleSubmitForm = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     if (!Object.values(errors).length && values?.plan?.value) {
       try {
-        const calculate = await api(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/calculate`,
-          {
-            method: "POST",
-            body: JSON.stringify({
-              origin: Number(values.origin),
-              destiny: Number(values.destiny),
-              time: Number(values.time),
-              planId: values.plan.value,
-            }),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const { data } = await api.post("calculate", {
+          origin: Number(values.origin),
+          destiny: Number(values.destiny),
+          time: Number(values.time),
+          planId: values.plan.value,
+        });
 
         setMinuteCost(
           new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "USD",
-          }).format(calculate.minuteCost)
+          }).format(data.minuteCost)
         );
         setFaleMaisCost(
           new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "USD",
-          }).format(calculate.faleMaisCost)
+          }).format(data.faleMaisCost)
         );
         setWithoutFaleMaisCost(
           new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "USD",
-          }).format(calculate.withoutFaleMaisCost)
+          }).format(data.withoutFaleMaisCost)
         );
       } catch (error) {
         console.error(error);
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -114,7 +116,7 @@ export default function Home() {
             <p>Calcule o valor da ligação e não tenha surpresas.</p>
           </Styled.Header>
           <Styled.Main>
-            <Styled.Form onSubmit={handleSubmitForm} noValidate>
+            <Styled.Form onSubmit={handleSubmitForm} noValidate data-testid="form">
               <Select
                 name="plan"
                 label="Plano Fale Mais"
@@ -137,7 +139,7 @@ export default function Home() {
                 required
               >
                 {errors?.origin && (
-                  <span className="error" aria-label="error na origem">
+                  <span className="error" aria-label="erro na origem">
                     {errors.origin}
                   </span>
                 )}
@@ -154,7 +156,7 @@ export default function Home() {
                 required
               >
                 {errors?.destiny && (
-                  <span className="error" aria-label="error no destino">
+                  <span className="error" aria-label="erro no destino">
                     {errors.destiny}
                   </span>
                 )}
@@ -180,9 +182,9 @@ export default function Home() {
               <Button
                 type="submit"
                 aria-label="calcular valor"
-                disabled={!data}
+                disabled={isLoading}
               >
-                <span>{!data ? "Loading..." : "Calcular!"}</span>
+                <span>{isLoading ? "Loading..." : "Calcular!"}</span>
               </Button>
             </Styled.Form>
           </Styled.Main>
